@@ -5,8 +5,12 @@ const morgan = require('morgan');
 
 const app = express();
 
+// app setup
+app.use(morgan('combined'));
+app.use(bodyParser.json({ type: '*/*' }));
+
+// server setup
 const port = process.env.PORT || 3000;
 const server = http.createServer(app);
-
 server.listen(port);
-console.log('Server is running on port:', port);
+console.log('Server is running on port', port);
