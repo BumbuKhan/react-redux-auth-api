@@ -5,6 +5,13 @@ module.exports = {
         const email = req.body.email;
         const password = req.body.password;
 
+        if (!email || !password) {
+            return res.status(422).json({
+                success: false,
+                message: "Please provide email and password"
+            });
+        }
+
         // checking whether a user with a giver email exists
         User.findOne({email: email}, function (err, existingUser) {
             if (err) {
@@ -36,7 +43,5 @@ module.exports = {
                 });
             });
         });
-
-
     }
-}
+};
