@@ -53,5 +53,14 @@ module.exports = {
                 });
             });
         });
+    },
+    signin: function (req, res, next) {
+        res.json({
+            success: true,
+            message: 'Successfully authenticated',
+            data: {
+                token: generateToken(req.user)
+            }
+        });
     }
 };
