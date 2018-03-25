@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/BumbuKhan/react-redux-auth-api#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
+    "jwt-simple": "^0.5.1",
     "mongoose": "^5.0.11",
     "morgan": "^1.9.0"
   },
