@@ -1,4 +1,11 @@
+const jwt = require('jwt-simple');
 const User = require('../models/user');
+const config = require('../config');
+
+function generateToken(user) {
+    const timestamp = new Date().getTime();
+    return jwt.encode({sub: user.id, iat: timestamp}, config.secret);
+}
 
 module.exports = {
     signup: function (req, res, next) {
@@ -39,7 +46,10 @@ module.exports = {
 
                 return res.json({
                     success: true,
-                    message: "Successfully added"
+                    message: "Successfully added",
+                    data: {
+                        token: generateToken(user)
+                    }
                 });
             });
         });
